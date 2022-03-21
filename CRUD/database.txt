@@ -8,4 +8,3 @@ ucup_2022_3,2022,ucup,gramedia,belajar Javascript
 gustut_2022_1,2022,gustut,gramedia,buku gustut
 yoghantara_2021_1,2021,yoghantara,kompas,buku
 faqihza_2019_4,2019,faqihza,gramedia,belajar javascript
-ricky_2022_1,2022,ricky,gramedia,python

@@ -1,5 +1,8 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException{
@@ -53,9 +56,40 @@ public class Main {
     }
 
     private static void tampilData() throws IOException{
-        System.out.println("Tampilkan Data");
+        FileReader fileInput;
+        BufferedReader bufferInput;
 
-        boolean isTambah = getYesNo("Tambahkan Data");
+        try {
+            fileInput = new FileReader("database.txt");
+            bufferInput = new BufferedReader(fileInput);
+        } catch (Exception e) {
+            System.err.println("Database tidak ditemukan");
+            System.err.println("Silahkan tambah data terlebih dahulu");
+            return;
+        }
+        
+        System.out.println("\n| No | Tahun | Penulis                | Penerbit               | Judul Buku");
+        System.out.println("===============================================================================");
+        
+        String data = bufferInput.readLine();
+        int nomorData = 0;
+        while(data != null) {
+            nomorData++;
+            StringTokenizer stringToken = new StringTokenizer(data, ",");
+            stringToken.nextToken();
+            System.out.printf("| %2d ", nomorData);
+            System.out.printf("| %4s  ",stringToken.nextToken());
+            System.out.printf("| %-20s   ",stringToken.nextToken());
+            System.out.printf("| %-20s   ",stringToken.nextToken());
+            System.out.printf("| %s   ",stringToken.nextToken());
+            System.out.print("\n");
+
+            data = bufferInput.readLine();
+        }
+        
+        System.out.println("===============================================================================");
+        fileInput.close();
+        bufferInput.close();
     }
 
     // Method untuk mengolah inputan Y/N dari user input
@@ -66,7 +100,7 @@ public class Main {
 
         while(!pilihanUser.equalsIgnoreCase("y") && !pilihanUser.equalsIgnoreCase("n")) {
             System.err.println("Silahkan Memilih y/n");
-            System.out.print(message);
+            System.out.print("\n"+message+" (y/n)?");
             pilihanUser = userInput.next();
         }
 

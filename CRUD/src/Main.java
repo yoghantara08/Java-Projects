@@ -39,6 +39,7 @@ public class Main {
                 case "3":
                     System.out.println("\nTAMBAH DATA BUKU");
                     tambahData();
+                    tampilData();
                     break;
                 case "4":
                     System.out.println("\nUBAH DATA BUKU");
@@ -69,7 +70,8 @@ public class Main {
             bufferInput = new BufferedReader(fileInput);
         } catch (Exception e) {
             System.err.println("Database tidak ditemukan");
-            System.err.println("Silahkan tambah data terlebih dahulu");
+            System.err.println("Silahkan tambah data terlebih dahulu\n");
+            tambahData();
             return;
         }
         
@@ -105,7 +107,8 @@ public class Main {
             System.out.println(file);
         } catch (Exception e) {
             System.err.println("Database tidak ditemukan");
-            System.err.println("Silahkan tambah data terlebih dahulu");
+            System.err.println("Silahkan tambah data terlebih dahulu\n");
+            tambahData();
             return;
         }
 
@@ -252,7 +255,6 @@ public class Main {
         return isExist;
     }
     
-
     // Method validasi tahun
     private static String ambilTahun() throws IOException {
     boolean tahunValid = false;

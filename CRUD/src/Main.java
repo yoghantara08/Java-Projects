@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
@@ -30,7 +31,7 @@ public class Main {
                     break;
                 case "2":
                     System.out.println("\nCARI BUKU");
-                    // Cari data
+                    cariData();
                     break;
                 case "3":
                     System.out.println("\nTAMBAH DATA BUKU");
@@ -55,7 +56,73 @@ public class Main {
         }
     }
 
-    private static void tampilData() throws IOException{
+    // Method find / Cari data
+    private static void cariData() throws IOException {
+        // membaca database ada atau tidak
+        try {
+            File file = new File("database.txt");
+            System.out.println(file);
+        } catch (Exception e) {
+            System.err.println("Database tidak ditemukan");
+            System.err.println("Silahkan tambah data terlebih dahulu");
+            return;
+        }
+
+        // ambil keyword dari user
+        Scanner userInput = new Scanner(System.in);
+        System.out.print("Masukkan kata kunci untuk mencari buku: ");
+        String cariString = userInput.nextLine();
+        
+        // check keyword di database
+        String[] keywords = cariString.split("\\s+");
+        checkBukuDiDatabase(keywords);
+
+        userInput.close();
+    }
+
+    // Method Cek Buku di Database
+    private static void checkBukuDiDatabase(String[] keywords) throws IOException{
+        
+        FileReader fileInput = new FileReader("database.txt");
+        BufferedReader bufferInput = new BufferedReader(fileInput);
+
+        String data = bufferInput.readLine();
+        boolean isExist;
+        int nomorData = 0;
+
+        System.out.println("\n| No | Tahun | Penulis                | Penerbit               | Judul Buku");
+        System.out.println("===============================================================================");
+
+        while(data != null) {  
+            // cek keywords di dalam baris
+            isExist = true;
+            for(String keyword: keywords){
+                isExist = isExist && data.toLowerCase().contains(keyword.toLowerCase());
+            }
+
+            // jika keywords cocok maka tampilkan data
+            if(isExist){
+                nomorData++;
+                StringTokenizer stringToken = new StringTokenizer(data, ",");
+                stringToken.nextToken();
+                System.out.printf("| %2d ", nomorData);
+                System.out.printf("| %4s  ",stringToken.nextToken());
+                System.out.printf("| %-20s   ",stringToken.nextToken());
+                System.out.printf("| %-20s   ",stringToken.nextToken());
+                System.out.printf("| %s   ",stringToken.nextToken());
+                System.out.print("\n");
+            }  
+
+            data = bufferInput.readLine();
+        }
+
+        System.out.println("===============================================================================");
+        fileInput.close();
+        bufferInput.close();
+    }
+
+    // Method Read / Tampil data
+    private static void tampilData() throws IOException {
         FileReader fileInput;
         BufferedReader bufferInput;
 

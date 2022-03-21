@@ -3,8 +3,8 @@ PramoedyaAnantatoer_2001_1,2001,Pramoedya Anantatoer,Gramedia,Bumi Manusia
 purcell_2009_1,2009,purcell,wiley,calculus
 faqihza_2019_1,2019,faqihza,gramedia,belajar C++
 faqihza_2019_2,2019,faqihza,gramedia,belajar python
-faqihza_2019_3,2019,faqihza,gramedia,belajar Java
-ucup_2022_3,2022,ucup,gramedia,belajar Javascript
+yoghantara_2019_1,2019,yoghantara,gramedia,belajar Java
+ucup_2022_4,2022,ucup,kompas,belajar Javascript
 gustut_2021_1,2021,gustut,kompas,buku
 gustut_2021_2,2021,gustut,kompas,ini buku
-gustut_2021_3,2021,gustut,gramedia,buku gustut
+ricky_2010_1,2010,ricky,sakura,ini buku

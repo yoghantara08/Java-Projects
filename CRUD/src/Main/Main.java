@@ -28,31 +28,29 @@ public class Main {
             System.out.print("\nPilihan Anda: ");
             pilihanUser = userInput.next();
 
-            switch(pilihanUser) {
-                case "1":
+            switch (pilihanUser) {
+                case "1" -> {
                     System.out.println("\nLIST SELURUH BUKU");
                     TampilData.tampilData();
-                    break;
-                case "2":
+                }
+                case "2" -> {
                     System.out.println("\nCARI BUKU");
                     CariData.cariData();
-                    break;
-                case "3":
+                }
+                case "3" -> {
                     System.out.println("\nTAMBAH DATA BUKU");
                     TambahData.tambahData();
                     TampilData.tampilData();
-                    break;
-                case "4":
+                }
+                case "4" -> {
                     System.out.println("\nUBAH DATA BUKU");
                     UpdateData.updateData();
-                    break;
-                case "5":
+                }
+                case "5" -> {
                     System.out.println("\nHAPUS DATA BUKU");
                     DeleteData.deleteData();
-                    break;
-                default:
-                    System.err.println("\nInput Anda Tidak Valid\nSilahkan Memilih Angka 1 sampai 5.");
-                    break;
+                }
+                default -> System.err.println("\nInput Anda Tidak Valid\nSilahkan Memilih Angka 1 sampai 5.");
             }
             isLanjutkan = Utility.getYesNo("Apakah anda ingin melanjutkan");
 
